@@ -9,6 +9,7 @@ body {
     -webkit-font-smoothing: antialiased;
     font-family: -apple-system, system-ui, sans-serif;
     padding-top: 80px;
+    padding-bottom: 80px;
     font-family: 'Cabin', sans-serif;
 }
 
@@ -18,7 +19,10 @@ body {
     border: 0; 
     box-sizing: border-box;
 }
-    
+.global {
+    display: grid;
+    row-gap: 100px;
+}
 :root {
     --section-gap: 80px;
 
@@ -42,7 +46,6 @@ body {
 
     --space-md: 24px;
     --space-lg: 32px;
-    --space-xl: 40px;
 
     /* decoration */
     --shadow-xs:  0 0.1px 0.3px rgba(0, 0, 0, 0.06),
@@ -70,7 +73,7 @@ body {
         --h2: 31.25px;
         --h3: 25px;
 
-        --section-gap: min(calc(5vw + 60px), 120px);
+        --section-gap: min(calc(5vw + 80px), 120px);
     }
 }
 @media (min-width: 1280px) {
@@ -99,7 +102,7 @@ h1, h2, h3 {
 }
 
 h1 {
-    font-size: var(--h1);
+    font-size: clamp(32px, calc(24px + 2vw), 50px) ;
 }
 h2 {
     font-size: var(--h2);
@@ -113,22 +116,16 @@ h1, h2, h3, p {
 }
 
 h3:not(:first-child) {
-    padding-top: var(--space-xl) ;
+    padding-top: var(--space-lg) ;
 }
 
-
-.global {
+.grid {
     display: grid;
     row-gap: var(--section-gap);
     grid-template-columns: 32px [page-start narrow-start] 1fr [page-end narrow-end] 32px;
-    grid-template-rows: [hero] auto
-                        [details] auto
-                        [author] auto
-                        [testimonials] auto
-                        [callout] auto;
 }
 
-.global > * {
+.grid > * {
     grid-column-start: page-start;
     grid-column-end: page-end;
 }
@@ -154,7 +151,7 @@ h3:not(:first-child) {
     grid-area: 1/-1;
 }
 .bg-book {
-    grid-row-start: hero;
+    grid-row-start: 1;
     grid-column-end: -1;
     background-color: var(--hb-color-background);
     transform: scaleY(.8);
@@ -164,7 +161,7 @@ h3:not(:first-child) {
     position: relative;
     width: 140px;
     height: 94px;
-    grid-row-start: hero;
+    grid-row-start: 1;
     grid-column-end: -1;
     align-self: flex-end;
     justify-self: right;
@@ -173,7 +170,7 @@ h3:not(:first-child) {
 .dots-book-top {
     width: 140px;
     height: 94px;
-    grid-row-start: hero;
+    grid-row-start: 1;
     position: relative;
     transform: translate(10px, 20%);
 }
@@ -230,18 +227,16 @@ h3:not(:first-child) {
 }
 
 .details {
-    grid-row-start: details;
     grid-column-start: narrow-start;
     grid-column-end: narrow-end;
 }
 @media(min-width: 780px) {
-    .global {
-        /* grid-template-columns: minmax(0, auto) [page-start] repeat(12, minmax(1%, 80px)) [page-end] minmax(0, auto) ; */
+    .grid {
         grid-template-columns: minmax(0, auto) [page-start] minmax(1%, 80px) [narrow-start] repeat(10, minmax(1%, 80px)) [narrow-end]  minmax(1%, 80px) [page-end] minmax(0, auto); 
         column-gap: 32px;
     }
     .hero {
-        grid-column-end: span 5;
+        grid-column-end: span 6;
         align-self: center;
     }
     .dots-book-top {
@@ -251,17 +246,50 @@ h3:not(:first-child) {
     .md\:column-start-8 {
         grid-column-start:8;
     }
-
-    /* .bg-book, 
-    .dots-book-top,
-    .dots-book-bottom,
-    .book {
-        grid-column-start:8;
-    }  */
 }
 
 @media(min-width: 1280px) {
-    .global {
+    .grid {
         grid-template-columns: minmax(0, auto) [page-start] repeat(2, minmax(1%, 80px)) [narrow-start] repeat(8, minmax(1%, 80px)) [narrow-end]  repeat(2, minmax(1%, 80px)) [page-end] minmax(0, auto); 
+    }
+    .hero {
+        grid-column-end: span 5;
+    }
+}
+
+/* more.... */
+.about-bg  {
+    background-color: var(--hb-color-background);
+    grid-column-start: 1;
+    grid-column-end: -1;
+
+}
+.about-photo {
+    transform: translateY(-20px);
+}
+@media(min-width: 780px) {
+    .about-bg  {
+        grid-row-start: 3;
+        grid-row-end: 4;
+        grid-column-start: 1;
+        grid-column-end: 4;
+        background-color: var(--hb-color-background);
+        transform: scaleY(.8);
+    }
+    .about-photo {
+        grid-column-end: 7;
+        grid-row-start: 3;
+        grid-row-end: 4;
+        position: relative;
+        z-index: 1;
+    }
+    .about-photo img {
+        margin: 0 auto;
+    }
+    .about {
+        grid-row-start: 3;
+        grid-row-end: 4;
+        grid-column-start: 8;
+        align-self: center;
     }
 }
