@@ -1,39 +1,119 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>JavaScript, ¡Inspírate!</title>
     <link href="https://fonts.googleapis.com/css2?family=Cabin:wdth,wght@0,200..900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="global">
-            <section class="grid">
-                <!-- <div class="bg-book"></div>
-                <div class="dots dots-book-top"></div>
-                <div class="dots dots-book-bottom"></div> -->
-                <div class="book">
-                    <div class="book-wrapper">
-                        <img src="img/book.png" alt="" />
-                        <div class="filter"></div>
+<div class="global">
+    <section class="grid">
+        <div class="md:column-start-8 bg-book"></div>
+        <div class="md:column-start-8 dots dots-book-top"></div>
+        <div class="md:column-start-8 dots dots-book-bottom"></div>
+        <div class="md:column-start-8 book">
+            <div class="book-wrapper">
+                <img src="img/book.png" width="456" height="585" alt="" />
+                <div class="filter"></div>
+            </div>
+        </div>
+        <div class="hero">
+            <h1 class="title">JavaScript, ¡Inspírate!</h1>
+            <h2 class="subtitle">Un libro de programación sencillo y divertido que nos muestra como programar en JavaScript, desde pseudocódigo hasta las peticiones AJAX.</h2>
+            <div class="margin-bottom"><a href="#" class="button">Consigue tu libro</a></div>
+            <div class="person">
+                <div class="person__avatar">
+                    <img src="img/author.jpg" alt="" width="43" height="43" class="avatar">
+                </div>
+                <div>
+                    <div class="color-dark">Author</div>
+                    <div>Ulises Gascón González</div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <div class="grid">
+        <div class="details">
+            <h2>Acerca de este libro</h2>
+            <div>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit, iure illum est cum doloremque ad, neque dolorem ut distinctio ducimus, illo nostrum dignissimos facere omnis porro esse aliquam nesciunt vero!</p>
+            </div>
+            <h3>¿Qué necesito saber antes de empezar?</h3>
+            <div>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam aperiam ipsam ab porro eligendi autem quos officia beatae minima modi atque, eveniet quis laboriosam voluptatibus enim sunt dolore adipisci neque?</p>
+                <p>Molestias temporibus vitae ad, doloribus repudiandae qui commodi, saepe rerum hic in enim minus, <a href="#">aspernatur explicabo</a> totam deserunt et? Iure reprehenderit ipsa assumenda esse provident minima soluta saepe exercitationem architecto.</p>
+            </div>
+        </div>
+    </div>
+    <div class="grid grid--about">
+        <div class="about-bg"></div>
+        <div class="about-photo">
+            <div class="dots dots-author-top"></div>
+            <div class="dots dots-author-bottom"></div>
+            <img src="img/photo-author.jpg" alt="" width="528" height="450">
+        </div>
+        <div class="about">
+            <h2>Sobre el autor</h2>
+            <div>
+                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Illo dolorum optio excepturi. Vero at assumenda minus enim, eum voluptatem consequuntur ipsa quos repudiandae sapiente cum architecto quis quisquam, possimus nihil!</p>
+                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Illo dolorum optio excepturi. Vero at assumenda minus enim, eum voluptatem consequuntur ipsa quos repudiandae sapiente cum architecto quis quisquam, possimus nihil!</p>
+            </div>
+        </div>
+    </div>
+    <section class="grid grid--testimonial">
+        <h2>Testimonials</h2>
+        <div class="testimonial">
+            <div class="testimonial__icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="47" height="38.953" viewBox="0 0 47 38.953">
+                    <path d="M28.477,0A19.534,19.534,0,0,0,9,19.477V38.953H28.477V19.477H15.492A12.94,12.94,0,0,1,28.477,6.492ZM56,0A19.534,19.534,0,0,0,36.523,19.477V38.953H56V19.477H43.016A12.94,12.94,0,0,1,56,6.492Z" transform="translate(-9)" fill="currentColor"/>
+                </svg>
+            </div>
+            <div>
+            <div class="testimonial__content">
+                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptatum expedita veniam optio excepturi dolorem sed impedit tempore architecto eius amet? Doloremque nulla magni tempore, corporis quasi doloribus sed laboriosam eaque!</p>
+                </div>
+                <div class="person">
+                    <div class="person__avatar"><img src="img/testimonial-1.jpg" alt="" width="43" height="43" class="avatar"></div>
+                    <div>
+                        <div class="color-dark">Ulises Gascón González</div>
+                        <div>Frontend developer</div>
                     </div>
                 </div>
-                <!-- <div class="hero">
-                    <h1 class="title">JavaScript, ¡Inspírate!</h1>
-                    <h2 class="subtitle">Un libro de programación sencillo y divertido que nos muestra como programar en JavaScript, desde pseudocódigo hasta las peticiones AJAX.</h2>
-                    <div class="cta"><a href="#" class="button">Consigue tu libro</a></div>
-                    <div class="author">
-                        <div class="author__avatar">
-                            <img src="img/author.jpg" alt="" width="43" height="43" class="avatar">
-                        </div>
-                        <div>
-                            <div class="color-dark">Author</div>
-                            <div>Ulises Gascón González</div>
-                        </div>
+            </div>
+        </div>
+        <div class="testimonial">
+            <div class="testimonial__icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="47" height="38.953" viewBox="0 0 47 38.953">
+                    <path d="M28.477,0A19.534,19.534,0,0,0,9,19.477V38.953H28.477V19.477H15.492A12.94,12.94,0,0,1,28.477,6.492ZM56,0A19.534,19.534,0,0,0,36.523,19.477V38.953H56V19.477H43.016A12.94,12.94,0,0,1,56,6.492Z" transform="translate(-9)" fill="currentColor"/>
+                </svg>
+            </div>
+            <div>
+            <div class="testimonial__content">
+                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptatum expedita veniam optio excepturi dolorem sed impedit tempore architecto eius amet? Doloremque nulla magni tempore, corporis quasi doloribus sed laboriosam eaque!</p>
+                </div>
+                <div class="person">
+                    <div class="person__avatar"><img src="img/testimonial-2.jpg" alt="" width="43" height="43" class="avatar"></div>
+                    <div>
+                        <div class="color-dark">Ulises Gascón González</div>
+                        <div>Frontend developer</div>
                     </div>
-                </div> -->
-            </section>
-    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="grid grid--callout">
+        <div class="dots dots-callout"></div>
+        <div class="callout">
+            <div class="callout__content">
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita soluta, corporis suscipit veniam delectus, eos aliquid ducimus architecto est voluptatibus ex</p>
+            </div>
+            <div>
+                <a href="#" class="button">Consigue tu libro</a>
+            </div>
+        </div>
+    </section>
+</div>
 </body>
 </html>

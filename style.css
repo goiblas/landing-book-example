@@ -1,33 +1,4 @@
-body {
-    /* -moz-osx-font-smoothing: grayscale;
-    -webkit-font-smoothing: antialiased; */
-    font-family: -apple-system, system-ui, sans-serif;
-    font-family: 'Cabin', sans-serif;
-}
 
-img {
-    display: block;
-    max-width: 100%;
-    height: auto;
-}
-
-* {
-    margin: 0; 
-    padding: 0; 
-    border: 0; 
-    box-sizing: border-box;
-}
-
-a {
-    color: var(--hb-color-link);
-    text-decoration: none;
-}
-
-.global {
-    display: grid;
-    row-gap: var(--section-gap);
-    padding-top: 80px;
-}
 :root {
     --section-gap: 100px;
     --inner-gap: 80px;
@@ -54,6 +25,7 @@ a {
 
     --space-md: 24px;
     --space-lg: 32px;
+    --space-xl: 40px;
 
     /* decoration */
     --shadow-md:  0 0.9px 1.5px rgba(0, 0, 0, 0.03), 
@@ -76,6 +48,7 @@ a {
         --h2: 31.25px;
         --h3: 25px;
 
+        /* como máximo será  */
         --section-gap: min(calc(5vw + 80px), 120px);
     }
 }
@@ -92,18 +65,52 @@ a {
     }
 }
 
+/* base */
+* {
+    margin: 0; 
+    padding: 0; 
+    border: 0; 
+    box-sizing: border-box;
+}
+a {
+    color: var(--hb-color-link);
+    text-decoration: none;
+}
+img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+}
+/* todos los enlace excepto los que tenga la clase .button */
+a:not(.button):hover {
+    text-decoration: underline;
+}
+.global {
+    display: grid;
+    row-gap: var(--section-gap);
+    padding-top: 40px;
+}
+@media (min-width: 780px) {
+    .global {
+        padding-top: 80px;
+    }
+}
+
 /* typography */
 body {
+    font-family: 'Cabin', -apple-system, system-ui, sans-serif;
     color: var(--hb-color-text-light);
     font-size: var(--text-md);
     line-height: 1.6;
 }
 h1, h2, h3 {
     color: var(--hb-color-text);
+    line-height: calc(2ex + 8px);
 }
 
 h1 {
-    font-size: var(--h1);
+    /* el primero valor es el mínimo, el último es el máximo y el del medio es el dinámico */
+    font-size: clamp(32px, calc(24px + 2vw), 50px) ;
 }
 h2 {
     font-size: var(--h2);
@@ -114,6 +121,312 @@ h3 {
 h1, h2, h3, p {
     margin-bottom: var(--space-md) ;
 }
+
 h3 {
     padding-top: var(--space-lg) ;
+}
+
+/* grid */
+.grid {
+    display: grid;
+    row-gap: var(--inner-gap);
+    grid-template-columns: var(--space-lg) [page-start narrow-start] 1fr [page-end narrow-end] var(--space-lg);
+}
+
+.grid > * {
+    grid-column-start: page-start;
+    grid-column-end: page-end;
+}
+
+/* shared */
+.color-dark {
+    color: var(--hb-color-text);
+}
+.margin-bottom {
+    margin-bottom: var(--space-lg);
+}
+.dots {
+    background-image: radial-gradient(circle, var(--hb-color-dots) 20%, transparent calc(20% + 1px));
+    background-size: 16px 16px;
+ }
+ 
+ .button {
+     display: inline-flex;   
+     background-color: var(--hb-color-primary);
+     border-radius: 999em;
+     height: 56px;
+     padding: 0 42px;
+     place-items: center;
+     text-decoration:none;
+     color: #ffffff;
+     box-shadow: var(--shadow-lg);
+     font-size: var(--text-lg);
+ }
+ .person {
+    font-size: var(--text-sm);
+    line-height: 1.4;
+    display: flex;
+ }
+    .person__avatar {
+        flex: 0 0 43px;
+        margin-right: 16px; }
+
+.avatar {
+    width: 43px;
+    height: 43px;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+/* Hero */
+.book {
+    grid-row-start: 1;
+}
+.book-wrapper {
+    position: relative;
+    max-width: 456px;
+    margin: 0 auto;
+    border-radius: 12px;
+    overflow: hidden;
+    width: 80%;
+    display: grid;
+    box-shadow: var(--shadow-xl);
+}
+
+/* es el navegador soporte fit-content entrará en esta media querie */
+@supports (width: fit-content) {
+    .book-wrapper {
+        max-width: 80%;
+        width: fit-content;
+    }
+}
+
+.filter {
+    background-image: linear-gradient(-15deg, rgba(0,0,0,.3), rgba(255,255,255,.6));
+    mix-blend-mode: overlay
+}
+
+/* todos los hijos diretos estarán superpuesto y ocupando el ancho y alto completo*/
+.book-wrapper > * {
+    grid-area: 1/-1;
+}
+.bg-book {
+    grid-row-start: 1;
+    grid-column-end: -1;
+    background-color: var(--hb-color-background);
+    transform: scaleY(.8);
+}
+
+.dots-book-bottom {
+    position: relative;
+    width: 140px;
+    height: 94px;
+    grid-row-start: 1;
+    grid-column-end: -1;
+    align-self: flex-end;
+    justify-self: right;
+    transform: translate(0, -20%);
+}
+.dots-book-top {
+    width: 140px;
+    height: 94px;
+    grid-row-start: 1;
+    position: relative;
+    transform: translate(10px, 20%);
+}
+
+.subtitle {
+    color: var(--hb-color-text-light);
+    font-size: var(--text-xl);
+    font-weight: 400;
+}
+.details {
+    grid-column-start: narrow-start;
+    grid-column-end: narrow-end;
+}
+
+@media(min-width: 780px) {
+    .grid {
+        grid-template-columns: minmax(0, auto) [page-start] minmax(1%, 80px) [narrow-start] repeat(10, minmax(1%, 80px)) [narrow-end]  minmax(1%, 80px) [page-end] minmax(0, auto); 
+        column-gap: var(--space-lg);
+    }
+    .hero {
+        grid-column-end: span 6;
+        align-self: center;
+    }
+    .dots-book-top {
+        transform: translate(40px, 30%);
+    }
+    /* para utilizar carazteres especiales dentro de una clase tenemos que utilizar  "\" */
+    .md\:column-start-8 {
+        grid-column-start:8;
+    }
+}
+
+@media(min-width: 1280px) {
+    .grid {
+        grid-template-columns: minmax(0, auto) [page-start] repeat(2, minmax(1%, 80px)) [narrow-start] repeat(8, minmax(1%, 80px)) [narrow-end]  repeat(2, minmax(1%, 80px)) [page-end] minmax(0, auto); 
+    }
+    .hero {
+        grid-column-end: span 5;
+    }
+}
+
+/* About */
+.grid--about {
+    --inner-gap: 0;
+    background-color: var(--hb-color-background);
+}
+.about-photo {
+    transform: translateY(-42px);
+    position: relative;
+}
+.about {
+    padding: var(--space-lg) 0;
+}
+.about-photo img {
+    max-width: 80%;
+    margin: 0 auto;
+    position: relative;
+}
+.dots-author-top {
+    width: 80px;
+    height: 60px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform: translate(-4px, 20px);
+}
+.dots-author-bottom {
+    width: 180px;
+    height: 60px;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    transform: translate(6px, 30px);
+}
+
+@media(min-width: 780px) {
+    .grid--about { 
+        background-color: initial;
+        grid-template-rows: var(--section-gap) 1fr var(--section-gap);
+    }
+    .about-bg  {
+        grid-row-start: 1;
+        grid-row-end: -1;
+        grid-column-start: 4;
+        grid-column-end: -1;
+        background-color: var(--hb-color-background);
+    }
+    .about-photo {
+        grid-row-start: 2;
+        grid-column-end: 7;
+        transform: unset;
+    }
+    .about {
+        grid-row-start: 2;
+        grid-column-start: 8;
+        position: relative;
+        align-self: center;
+    }
+    .about-photo img {
+        width: 100%;
+        max-width: 100%;
+        position: relative;
+        margin: 0;
+    }
+    .dots-author-top {
+        height: 140px;
+        transform: translate(-36px, 20px);
+    }
+    .dots-author-bottom {
+        width: 240px;
+        height: 114px;
+        transform: translate(52px, 34px);
+    }
+}
+@media(min-width: 1280px) {
+    .about {
+        grid-column-end: span 5;
+    }
+}
+
+/* testimonials */
+/* podemos cambiar directame el valor de la variable para reducir el espacio en esta sección en concreto */
+.grid--testimonial {
+    --inner-gap: 12px;
+}
+.testimonial {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    column-gap: var(--space-lg);
+}
+.testimonial:not(:last-child) {
+    margin-bottom: var(--space-xl);
+}
+.testimonial__icon {
+    color:var(--hb-color-testimonial-icon) ;
+}
+@media(min-width: 780px) {
+    /* repetir el selector aumenta la especificidad */
+    .testimonial.testimonial {
+        grid-column-end: span 6;
+        margin-bottom: 0;
+    }
+    .testimonial:nth-of-type(2n) {
+        grid-column-start: 8;
+    }
+}
+@media(min-width: 1280px) {
+    .testimonial.testimonial {
+        grid-column-end: span 5;
+    }
+    .testimonial:nth-of-type(2n) {
+        grid-column-start: 9;
+    }
+}
+
+
+/* callout */
+.grid--callout {
+    padding: 50px 0;
+    /* el fondo es 50% gris y 50% transparente, para simular el efecto de superposición */
+    background-image: linear-gradient(transparent 50%, var(--hb-color-background) 50%);
+}
+.callout {
+    grid-row-start: 1;
+    padding: 48px max(32px, 6.25%);
+    box-shadow: var(--shadow-md);
+    background-color: #ffffff;
+    display: grid;
+    font-size: var(--text-lg);
+    color: var(--hb-color-text);
+    position: relative;
+}
+
+.dots-callout {
+    width: 260px;
+    height: 140px;
+    grid-row-start: 1;
+    transform: translate(-32px, -20px);
+}
+@media(min-width: 780px) {
+    .callout {
+        grid-template-columns: 1fr auto;
+        column-gap: 10%;
+    }
+    .callout__content p:last-child {
+        margin-bottom: 0;
+    }
+}
+
+@media(min-width: 1280px) {
+    .callout {
+        grid-column-start: 3;
+        grid-column-end: -3;
+    }
+    .dots-callout {
+        grid-column-start: 3;
+        transform: translate(-64px, -20px);
+    } 
 }
